@@ -32,6 +32,17 @@ block content
                     each item in comments 
                         article.customer-comment 
                             h3= item.name
+                            small= item.created_at
                             p= item.comment 
                 else 
                     p No comments. yet. Be the first to leave one!
+
+            if totalPages > 1
+                nav.pagination 
+                    if currentPage > 1
+                        a(href=`/comments?page=${currentPage - 1}`) Previous 
+                    
+                    span Page #{currentPage} of #{totalPages}
+
+                    if currentPage < totalPages 
+                        a(href=`/comments?page=${currentPage + 1}`) Next

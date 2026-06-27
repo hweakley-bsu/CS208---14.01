@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const validator = require('validator');
 
 /* GET landing page. */
 router.get('/', function(req, res, next){
@@ -20,44 +21,103 @@ router.get('/about', function(req, res,next) {
 
 /* GET comments page. */
 router.get('/comments', function(req, res, next) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
   try {
-    req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
-      if (err) {
-        console.error('Error fetching comments:', err);
+    req.db.query('SELECT COUNT(*) AS total FROM comments;', (countErr, countResults) => {
+      if (countErr) {
+        console.error('Error counting comments:', countErr);
         return res.render('comments', {
-          title: 'Customer Comments | Downtown Donuts', 
+          title: 'Customer Comments | Downtown Donuts',
           comments: [],
-          error: 'Unable to load comments right now.'
-          });
+          error: 'Unable to load comments right now.',
+          currentPage: 1,
+          totalPages: 1
+        });
       }
 
-      res.render('comments', {
-        title: 'Customer Comments | Downtown Donuts', 
-        comments: results,
-        error: null
-      });
+      const totalComments = countResults[0].total;
+      const totalPages = Math.ceil(totalComments / limit) || 1;
+
+      req.db.query(
+        'SELECT * FROM comments ORDER BY created_at DESC LIMIT ? OFFSET ?;',
+        [limit, offset],
+        (err, results) => {
+          if (err) {
+            console.error('Error fetching comments:', err);
+            return res.render('comments', {
+              title: 'Customer Comments | Downtown Donuts',
+              comments: [],
+              error: 'Unable to load comments right now.',
+              currentPage: page,
+              totalPages
+            });
+          }
+
+          res.render('comments', {
+            title: 'Customer Comments | Downtown Donuts',
+            comments: results,
+            error: null,
+            currentPage: page,
+            totalPages
+          });
+        }
+      );
     });
   } catch (error) {
     console.error('Error fetching comments:', error);
     res.render('comments', {
-      title: 'Customer Comments | Downtown Donuts', 
+      title: 'Customer Comments | Downtown Donuts',
       comments: [],
-      error: 'Unable to load comments right now.'
+      error: 'Unable to load comments right now.',
+      currentPage: 1,
+      totalPages: 1
     });
   }
 });
 
 router.post('/comments', function(req, res, next) {
-  const { name, comment } = req.body;
+  let { name, comment } = req.body;
+
+  name = validator.escape(name.trim());
+  comment = validator.escape(comment.trim());
+
+  if (!name || !comment) {
+    return res.render('comments', {
+      title: 'Customer Comments | Downtown Donuts',
+      comments: [],
+      error: 'Name and comment cannot be blank.',
+      currentPage: 1,
+      totalPages: 1
+    });
+  }
+
+  if (name.length > 50 || comment.length > 500) {
+    return res.render('comments', {
+      title: 'Customer Comments | Downtown Donuts',
+      comments: [],
+      error: 'Name must be 50 characters or fewer, and comment must be 500 characters or fewer.',
+      currentPage: 1,
+      totalPages: 1
+    });
+  }
 
   try {
     req.db.query(
-      'INSERT INTO comments (name, comment) VALUES (?, ?);', 
-      [name, comment], 
+      'INSERT INTO comments (name, comment) VALUES (?, ?);',
+      [name, comment],
       (err, results) => {
         if (err) {
           console.error('Error adding comment:', err);
-          return res.status(500).send('Error adding comment');
+          return res.render('comments', {
+            title: 'Customer Comments | Downtown Donuts',
+            comments: [],
+            error: 'Unable to post your comment right now. Please try again later.',
+            currentPage: 1,
+            totalPages: 1
+          });
         }
 
         res.redirect('/comments');
@@ -65,7 +125,13 @@ router.post('/comments', function(req, res, next) {
     );
   } catch (error) {
     console.error('Error adding comment:', error);
-    res.status(500).send('Error adding comment');
+    res.render('comments', {
+      title: 'Customer Comments | Downtown Donuts',
+      comments: [],
+      error: 'Unable to post your comment right now. Please try again later.',
+      currentPage: 1,
+      totalPages: 1
+    });
   }
 });
 
