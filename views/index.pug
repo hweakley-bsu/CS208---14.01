@@ -1,23 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  ol
-  each val in todos
-    li
-      span= val.task + ' - '
-      if val.completed > 0
-        span Completed
-      else
-        span Not Completed
-      form(method='POST' action='/delete')
-        input(type='hidden', name='id', value=val.id)
-        button(type='submit') Delete
+  main.landing-page
+    section.hero
+      .hero-text 
+        p.eyebrow Family-owned since 1992
+        h1 Downtown Donuts
+        p.hero-tagline Cozy donuts, fresh coffee, and downtown charm.
 
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+        .hero-buttons
+          a.button.primary(href='/menu') View Menu 
+          a.button.secondary(href='https://www.doordash.com/' target='_blank') Order Online
+
+      .hero-card 
+        h2 Fresh every morning 
+        p Stop by for handmade donuts, warm coffee, and a welcoming atmosphere.
+
+    section.home-preview 
+      article.preview-card 
+        h2 Our Menu 
+        p Explore donuts, coffee, and seasonal favorites.
+        a(href='/menu') See the menu 
+
+      article.preview-card 
+        h2 Our Story 
+        p Learn more about our family-owned shop and downtown history 
+        a(href='/about') About us 
+
+      article.preview-card 
+        h2 Customer Comments 
+        p Read what visitors are saying or leave your own comment.
+        a(href='/comments') View comments 
+
