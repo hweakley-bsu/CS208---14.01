@@ -37,6 +37,81 @@ h1 {
   font-weight: 400;
 }
 
+/* Page Backgrounds */
+.landing-page,
+.menu-page,
+.about-page,
+.comments-page {
+  background-color: var(--seasalt);
+  padding-bottom:4rem;
+}
+
+/* Card Styles */
+.hero-card,
+.preview-card,
+.menu-section,
+.about-card,
+.comment-form-card,
+.comments-list-card {
+  background-color: var(--seasalt);
+  color: var(--black);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.preview-card,
+.menu-section,
+.about-card,
+.comment-form-card,
+.comments-list-card {
+  border-top: 5px solid var(--saffron);
+}
+
+/* Heading Styles */
+.hero-card h2,
+.preview-card h2,
+.menu-section h2, 
+.order-section h2,
+.about-card h2,
+.comment-form-card h2,
+.comments-list-card h2,
+.customer-comment h3 {
+  color: var(--dark-green);
+  margin-top: 0;
+}
+
+/* Grid Containers */
+.home-preview,
+.about-values {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Borders */
+.menu-item,
+.coffee-item,
+.customer-comment {
+  padding: 1rem 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+/* Paragraph Spacing */
+.preview-card p,
+.menu-item p,
+.coffee-item p,
+.donut-holes p,
+.aside-box p,
+.about-card p,
+.customer-comment p {
+  line-height: 1.5;
+}
+
+
 /* =========================
    Header & Navigation
 ========================= */
@@ -86,11 +161,6 @@ h1 {
 /* =========================
    Landing Page
 ========================= */
-
-.landing-page {
-  background-color: var(--seasalt);
-}
-
 .hero {
   background-color: var(--dark-green);
   color: var(--seasalt);
@@ -145,30 +215,6 @@ h1 {
   color: var(--saffron);
 }
 
-.hero-card,
-.preview-card {
-  background-color: var(--seasalt);
-  color: var(--black);
-  border-radius: 18px;
-  padding: 2rem;
-  max-width: 350px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.hero-card h2,
-.preview-card h2 {
-  color: var(--dark-green);
-}
-
-.home-preview {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
 .preview-card {
   background-color: var(--seasalt);
   color: var(--black);
@@ -179,15 +225,6 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.preview-card h2 {
-  margin-top: 0;
-  color: var(--dark-green);
-}
-
-.preview-card p {
-  line-height: 1.5;
 }
 
 .preview-card a {
@@ -204,11 +241,6 @@ h1 {
 /* =========================
    Menu Page
 ========================= */
-.menu-page {
-  background-color: var(--seasalt);
-  padding-bottom: 4rem;
-}
-
 .page-hero {
   background-color: var(--dark-green);
   color: var(--seasalt);
@@ -220,29 +252,10 @@ h1 {
   margin: 0.5rem 0;
 }
 
-.menu-section {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: var(--seasalt);
-  border-top: 5px solid var(--saffron);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-}
-
-.menu-section h2,
-.order-section h2 {
-  color: var(--dark-green);
-  text-align: center;
-  margin-top: 0;
-}
-
 .menu-item {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px dashed #ccc;
 }
 
 .menu-item h3 {
@@ -301,11 +314,6 @@ h1 {
   border-bottom: 2px solid var(--saffron);
 }
 
-.coffee-item {
-  padding: 1rem 0;
-  border-bottom: 1px dashed #ccc;
-}
-
 .coffee-item h3 {
   margin: 0;
 }
@@ -328,7 +336,7 @@ h1 {
 }
 
 .aside-box h3 {
-  margin: 0 0 0,5rem;
+  margin: 0 0 0.5rem;
   color: var(--dark-green);
   text-transform: uppercase;
   font-size: 1rem;
@@ -336,7 +344,6 @@ h1 {
 
 .aside-box p {
   margin: 0.25rem 0;
-  line-height: 1.5;
 }
 
 .order-section {
@@ -361,31 +368,17 @@ h1 {
 /* =========================
    About Page
 ========================= */
-.about-page {
-  background-color: var(--seasalt);
-  padding-bottom: 4rem;
-}
-
-.about-story {
+.about-story,
+.comments-layout {
   max-width: 1100px;
   margin: 3rem auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
 }
 
-.about-card {
-  background-color: var(--seasalt);
-  border-top: 5px solid var(--saffron);
-  border-radius: 18px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-}
-
-.about-card h2 {
-  color: var(--dark-green);
-  margin-top: 0;
+.about-story {
+  grid-template-columns: 2fr 1fr;
 }
 
 .about-card p {
@@ -401,15 +394,6 @@ h1 {
   color: var(--saffron);
 }
 
-.about-values {
-  max-width: 1100px;
-  margin: 0 auto 4rem;
-  padding: 0 2rem;
-  display: grid;
-  grid-template-columns: repeat (3, 1fr);
-  gap: 1.5rem;
-}
-
 .about-values .preview-card {
   max-width: none;
 }
@@ -417,33 +401,8 @@ h1 {
 /* =========================
    Comments Page
 ========================= */
-.comments-page {
-  background-color: var(--seasalt);
-  padding-bottom: 4rem;
-}
-
 .comments-layout {
-  max-width: 1100px;
-  margin: 3rem auto;
-  padding: 0 2rem;
-  display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 1.5rem;
-}
-
-.comment-form-card,
-.comments-list-card {
-  background-color: var(--seasalt);
-  border-top: 5px solid var(--saffron);
-  border-radius: 18px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-}
-
-.comment-form-card h2,
-.comments-list-card h2 {
-  color: var(--dark-green);
-  margin-top: 0;
 }
 
 .comment-form-card form {
@@ -484,25 +443,6 @@ h1 {
   cursor: pointer;
 }
 
-.customer-comment {
-  padding: 1rem 0;
-  border-bottom: 1px dashed #ccc;
-}
-
-.customer-comment h3 {
-  margin: 0;
-  color: var(--dark-green);
-}
-
-.customer-comment h3 {
-  margin: 0;
-  color: var(--dark-green);
-}
-
-.customer-comment p {
-  line-height: 1.5;
-}
-
 .error-message {
   color: #8b0000;
   font-weight: bold;
@@ -522,6 +462,14 @@ h1 {
   .hero {
     text-align: center;
     padding: 2.25rem 1.25rem;
+  }
+
+  /* Page Grids */
+  .about-values,
+  .about-story,
+  .comments-layout {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 
   h1 {
@@ -579,18 +527,5 @@ h1 {
 
   .coffee-item {
     font-size: 0.9rem;
-  }
-
-  /* About Page */
-  .about-story,
-  .about-values {
-    grid-template-columns: 1fr;
-    padding: 0 1rem;
-  }
-
-  /* Comments Page */
-  .comments-layout {
-    grid-template-columns: 1fr;
-    padding: 0 1rem;
   }
 }
