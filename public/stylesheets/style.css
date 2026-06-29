@@ -37,6 +37,28 @@ h1 {
   font-weight: 400;
 }
 
+/* Keyboard focus for accessiblity */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--saffron);
+  outline-offset: 4px;
+}
+
+.button:hover,
+.button:focus-visible,
+.pagination a:hover,
+.pagination a:focus-visible {
+  background-color: var(--saffron);
+  color: var(--dark-green);
+}
+
+.comment-form-card input:focus-visible,
+.comment-form-card textarea:focus-visible {
+  border-color: var(--dark-green);
+}
+
 /* Page Backgrounds */
 .landing-page,
 .menu-page,
@@ -111,7 +133,6 @@ h1 {
   line-height: 1.5;
 }
 
-
 /* =========================
    Header & Navigation
 ========================= */
@@ -153,7 +174,7 @@ h1 {
 }
 
 .site-nav a:hover,
-.site-nav a:focus {
+.site-nav a:focus-visible {
   color: var(--saffron);
   text-decoration: underline;
 }
