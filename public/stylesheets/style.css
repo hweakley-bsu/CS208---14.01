@@ -450,6 +450,43 @@ h1 {
   font-size: 0.9rem;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 2rem;
+  padding-top: 1.5 rem;
+}
+
+.pagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.65rem 1.25rem;
+  min-width: 90px;
+
+  border: 2px solid var(--saffron);
+  border-radius: 999px;
+
+  color: var(--dark-green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  background-color: var(--saffron);
+  color: var(--dark-green);
+}
+
+.pagination span {
+  color: var(--dark-green);
+  font-weight: bold;
+}
+
 .error-message {
   color: #8b0000;
   font-weight: bold;
@@ -562,6 +599,12 @@ h1 {
 
   .coffee-item {
     font-size: 0.9rem;
+  }
+
+  /* Comment Pagination */
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   /* Footer */
