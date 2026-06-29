@@ -68,6 +68,16 @@ textarea:focus-visible {
   padding-bottom:4rem;
 }
 
+.site-header,
+.hero,
+.page-hero,
+.order-section,
+.visit-card,
+.site-footer {
+  background-color: var(--dark-green);
+  color: var(--seasalt);
+}
+
 /* Card Styles */
 .hero-card,
 .preview-card,
@@ -150,10 +160,6 @@ textarea:focus-visible {
   display: block;
 }
 
-.site-header {
-  background-color: var(--dark-green);
-}
-
 .site-nav {
   display: flex;
   justify-content: space-evenly;
@@ -183,8 +189,6 @@ textarea:focus-visible {
    Landing Page
 ========================= */
 .hero {
-  background-color: var(--dark-green);
-  color: var(--seasalt);
   padding: 3rem 2rem;
   display: flex;
   align-items: center;
@@ -214,6 +218,7 @@ textarea:focus-visible {
 ========================= */
 .hero-buttons {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2rem;
@@ -237,12 +242,6 @@ textarea:focus-visible {
 }
 
 .preview-card {
-  background-color: var(--seasalt);
-  color: var(--black);
-  border-radius: 18px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  border-top: 5px solid var(--saffron);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -263,8 +262,6 @@ textarea:focus-visible {
    Menu Page
 ========================= */
 .page-hero {
-  background-color: var(--dark-green);
-  color: var(--seasalt);
   text-align: center;
   padding: 3rem 1.5rem;
 }
@@ -372,18 +369,7 @@ textarea:focus-visible {
   margin: 2rem auto 4rem;
   padding: 2.5rem;
   text-align: center;
-  background-color: var(--dark-green);
-  color: var(--seasalt);
   border-radius: 18px;
-}
-
-.order-section .hero-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
 }
 
 /* =========================
@@ -404,15 +390,6 @@ textarea:focus-visible {
 
 .about-card p {
   line-height: 1.6;
-}
-
-.visit-card {
-  background-color: var(--dark-green);
-  color: var(--seasalt);
-}
-
-.visit-card h2 {
-  color: var(--saffron);
 }
 
 .about-values .preview-card {
@@ -478,7 +455,7 @@ textarea:focus-visible {
   gap: 1rem;
 
   margin-top: 2rem;
-  padding-top: 1.5 rem;
+  padding-top: 1.5rem;
 }
 
 .pagination a {
@@ -498,7 +475,7 @@ textarea:focus-visible {
 }
 
 .pagination a:hover,
-.pagination a:focus {
+.pagination a:focus-visible {
   background-color: var(--saffron);
   color: var(--dark-green);
 }
@@ -517,8 +494,6 @@ textarea:focus-visible {
    Footer
 ========================= */
 .site-footer {
-  background-color: var(--dark-green);
-  color: var(--seasalt);
   border-top: 3px solid var(--saffron);
   padding: 2rem;
 }
