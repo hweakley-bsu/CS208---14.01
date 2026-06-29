@@ -443,6 +443,13 @@ h1 {
   cursor: pointer;
 }
 
+.comment-date {
+  display: block;
+  margin: 0.25rem 0 0.75rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
 .error-message {
   color: #8b0000;
   font-weight: bold;
@@ -556,7 +563,7 @@ h1 {
   .coffee-item {
     font-size: 0.9rem;
   }
-  
+
   /* Footer */
   .footer-content {
     grid-template-columns: 1fr;

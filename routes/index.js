@@ -56,6 +56,19 @@ router.get('/comments', function(req, res, next) {
             });
           }
 
+          results.forEach(comment => {
+            comment.formattedDate = new Date(comment.created_at).toLocaleString(
+              'en-US',
+              {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
+              }
+            );
+          });
+
           res.render('comments', {
             title: 'Customer Comments | Downtown Donuts',
             comments: results,

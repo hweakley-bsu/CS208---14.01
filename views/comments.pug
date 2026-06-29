@@ -32,7 +32,7 @@ block content
                     each item in comments 
                         article.customer-comment 
                             h3= item.name
-                            small= item.created_at
+                            small.comment-date Posted #{item.formattedDate}
                             p= item.comment 
                 else 
                     p No comments. yet. Be the first to leave one!
